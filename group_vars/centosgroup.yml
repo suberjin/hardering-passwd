@@ -1,0 +1,4 @@
+ansible_package_manager: yum
+libpam_pakages: libpwquality
+pwquality_path: system-auth
+user: test

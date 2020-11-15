@@ -1,0 +1,4 @@
+ansible_package_manager: apt
+libpam_pakages: libpam-pwquality
+pwquality_path: common-password
+user: test

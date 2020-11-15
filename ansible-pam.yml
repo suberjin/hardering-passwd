@@ -1,0 +1,25 @@
+---
+- name: Hardering password requirenments    
+  hosts: all
+
+  tasks:
+    - name: make sure that pwquality library exists
+      action: "{{ ansible_package_manager }} name={{ libpam_pakages }} state=present"
+
+    - name: Replace all module arguments in an existing rule
+      pamd:
+        name: "{{ pwquality_path }}"
+        type: password
+        control: requisite
+        module_path: pam_pwquality.so
+        module_arguments: 'retry=3
+          minlen=8
+          difok=3
+          gecoscheck=1
+          lcredit=-1
+          ucredit=-1
+          dcredit=-1
+          ocredit=-1
+          reject_username
+          enforce_for_root'
+        state: updated
